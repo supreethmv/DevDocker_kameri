@@ -8,8 +8,8 @@ import { BehaviorSubject } from 'rxjs';
 export class WebSocketService {
 
   socket:SocketIOClient.Socket;                           //Socket instance
-  url:string='ws://localhost:3000';                       //node server port
-  //url:string='ws://backend_service:3000';                 //node server port
+  //url:string='ws://localhost:3000';                       //node server port
+  url:string='ws://backend_service:3000';                 //node server port
 
   private test_data = new BehaviorSubject<number[]>([]);  //BehaviorSubject instance typecasted to number array.
   cast=this.test_data.asObservable();                     //'cast' can be subscribed in any component to observe

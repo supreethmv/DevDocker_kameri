@@ -3,16 +3,16 @@ version: '3.7'
 services:
 #docker build -t angular .
 #docker run -it -v ${PWD}:/app -v /app/node_modules -p 4200:4200 --rm angular
-#  angular_service:
-#    container_name: angular_container
-#    build:
-#      context: ./frontend
-#      dockerfile: Dockerfile
+  angular_service:
+    container_name: angular_container
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
 #    volumes:
 #      - './frontend:/app'
 #      - '/app/node_modules'
-#    ports:
-#      - '4200:4200'
+    ports:
+      - '4200:4200'
 
 
 

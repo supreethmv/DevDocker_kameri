@@ -7,9 +7,9 @@ const port = process.env.PORT || 3000;
 
 io.on('connection',function(socket){
     console.log("A user connected");
-    amqp.connect('amqp://rabbitmq_service:5672', function(error0, connection) {
+    //amqp.connect('amqp://rabbitmq_service:5672', function(error0, connection) {
     //amqp.connect(process.env.AMQP_RECEIVE_URL, function(error0, connection) {
-    //amqp.connect('amqp://localhost:5672', function(error0, connection) {
+    amqp.connect('amqp://localhost:5672', function(error0, connection) {
     //amqp.connect(url, function(error0, connection) {
     if (error0) {
         console.log(error0);
@@ -44,9 +44,15 @@ io.on('connection',function(socket){
                 noAck: true
             });
         });
+        socket.on('disconnect',(reason)=>{
+            console.log("A client Disconnected. Connection to RabbitMQ Closed. Reason:",reason);
+            channel.close();
+        });
     });
+
 });
 });
+
 
 server.listen(3000,()=>{
     console.log(`Socket.io server is listening on port ${port}`);
